@@ -1,13 +1,7 @@
 FROM bitnami/laravel:10.0.4
-
-WORKDIR /project
-
-COPY . /project
+COPY . /app
 
 RUN composer install
-
-RUN cp .env.example .env
-
 RUN php artisan key:generate
 
 CMD ["php", "artisan","serve"]
