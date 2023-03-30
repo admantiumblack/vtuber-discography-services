@@ -33,7 +33,15 @@ class SpotifyAlbumController extends Controller
         $query = $request->query();
         $url = $request->url();
 
+//        dd(VtuberSpotify::find($id));
+
         $artist = VtuberSpotify::find($id);
+
+        if ($artist->spotify_id == '')
+        {
+            return response()->json('Albums data are still empty.');
+        }
+
         $id = $artist ->spotify_id;
 
         $albums = (new Spotify(['country' => null, 'locale' => null, 'market' => 'ID']))
