@@ -24,4 +24,7 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    protected $commands = [
+        Commands\test_db_connection::class
+    ];
 }
